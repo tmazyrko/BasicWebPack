@@ -1,4 +1,4 @@
-function generateTableHead(table, data) {
+export default function generateTableHead(table, data) {
     let thead = table.createTHead();
     let row = thead.insertRow();
     for (let key of data) {
