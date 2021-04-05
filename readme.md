@@ -1,3 +1,27 @@
+## Postman/CRUD Screenshots
+
+1. POST Request
+   ![Screenshot 1](images/CRUD_post.PNG)
+
+
+2. GET Request
+   ![Screenshot 2](images/CRUD_get.PNG)
+   
+
+3. PUT Request
+   ![Screenshot 3](images/CRUD_put.PNG)
+
+
+4. GET Request (all)
+   ![Screenshot 4](images/CRUD_get_all.PNG)
+
+
+5. DELETE Request
+   ![Screenshot 5](images/CRUD_delete.PNG)
+
+
+---
+
 Prerequisites:
 Install Node:
 https://nodejs.org/en/download/
