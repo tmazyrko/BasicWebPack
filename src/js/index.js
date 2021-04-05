@@ -1,6 +1,5 @@
 import getJSON from "./getJSON";
 
-TestJS();
 getJSON("", function (data) {
     console.log(data);
 });
@@ -24,7 +23,6 @@ getJSON('http://localhost:8000/api/v1/cities',
         }
 
     });
-ConsoleLogIt("this workedss  in the bundle");
 
 function generateTableHead(table, data) {
     let thead = table.createTHead();
