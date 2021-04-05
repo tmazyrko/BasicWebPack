@@ -1,4 +1,4 @@
-function generateTable(table, data) {
+export default function generateTable(table, data) {
     for (let element of data) {
         let row = table.insertRow();
         console.log(element);
