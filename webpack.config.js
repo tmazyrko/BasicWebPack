@@ -17,6 +17,18 @@ module.exports = {
         filename: 'js/bundle.js',
         clean: true,
     },
+    module: {
+        rules: [
+            {
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader', 'eslint-loader'],
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['*', '.js'],
+    },
     plugins: [
         new CopyPlugin({
             patterns: [
