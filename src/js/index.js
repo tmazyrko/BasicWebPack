@@ -41,4 +41,3 @@ getJSON('http://localhost:8000/api/v1/cities',
       generateTable(table, dataRecords);
     }
   });
-
