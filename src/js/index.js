@@ -1,12 +1,12 @@
 import getJSON from './getJSON';
 import TableGen from './TableGen';
 
-getJSON('', function (data) {
+getJSON('', (data) => {
   console.log(data);
 });
 
 getJSON('http://localhost:8000/api/v1/cities',
-  function (err, records) {
+  (err, records) => {
     if (err !== null) {
       alert('Something went wrong: ' + err);
     } else {
