@@ -1,5 +1,28 @@
 import getJSON from './getJSON';
-import TableGen from './TableGen';
+
+function generateTableHead(table, data) {
+  const thead = table.createTHead();
+  const row = thead.insertRow();
+  for (const key of data) {
+    const th = document.createElement('th');
+    const text = document.createTextNode(key);
+    th.appendChild(text);
+    row.appendChild(th);
+  }
+}
+
+function generateTable(table, data) {
+  for (const element of data) {
+    const row = table.insertRow();
+    // console.log(element);
+    let key;
+    for (key in element) {
+      const cell = row.insertCell();
+      const text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
 
 getJSON('', (data) => {
   console.log(data);
@@ -14,6 +37,8 @@ getJSON('http://localhost:8000/api/v1/cities',
       const data = Object.keys((records.data[0]));
       const dataRecords = records.data;
 
-      new TableGen(table, data, dataRecords);
+      generateTableHead(table, data);
+      generateTable(table, dataRecords);
     }
   });
+
