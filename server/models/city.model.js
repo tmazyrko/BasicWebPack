@@ -2,7 +2,7 @@
 
 const dbConn = require('../config/db.config');
 // city object create
-const city = function (city) {
+const city = () => {
   this.fldName = city.fldName;
   this.fldLat = city.fldLat;
   this.fldLong = city.fldLong;
@@ -43,7 +43,7 @@ city.findAll = function (result) {
     }
   });
 };
-city.update = function (id, city, result) {
+city.update = (id, result) => {
   dbConn.query('UPDATE tblCitiesImport SET fldName=?,fldLat=?,fldLong=?,fldCountry=?,fldAbbreviation=?,fldCapitalStatus=?,fldPopulation=? WHERE id = ?', [city.fldName, city.fldLat, city.fldLong, city.fldCountry, city.fldAbbreviation, city.fldCapitalStatus, city.fldPopulation, id], (err, res) => {
     if (err) {
       console.log('error: ', err);
