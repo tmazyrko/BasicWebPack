@@ -8,7 +8,7 @@ export default class TableGen {
     const thead = table.createTHead();
     const row = thead.insertRow();
     for (const key of data) {
-      const th = document.createElement("th");
+      const th = document.createElement('th');
       const text = document.createTextNode(key);
       th.appendChild(text);
       row.appendChild(th);

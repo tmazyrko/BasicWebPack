@@ -1,7 +1,7 @@
-import getJSON from "./getJSON";
-import TableGen from "./TableGen";
+import getJSON from './getJSON';
+import TableGen from './TableGen';
 
-getJSON("", function (data) {
+getJSON('', function (data) {
   console.log(data);
 });
 
@@ -10,7 +10,7 @@ getJSON('http://localhost:8000/api/v1/cities',
     if (err !== null) {
       alert('Something went wrong: ' + err);
     } else {
-      const table = document.querySelector("table");
+      const table = document.querySelector('table');
       const data = Object.keys((records.data[0]));
       const dataRecords = records.data;
 
