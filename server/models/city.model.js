@@ -11,7 +11,7 @@ const city = () => {
   this.fldCapitalStatus = city.fldCapitalStatus;
   this.fldPopulation = city.fldPopulation;
 };
-city.create = function (newCity, result) {
+city.create = (newCity, result) => {
   dbConn.query('INSERT INTO tblCitiesImport set ?', newCity, (err, res) => {
     if (err) {
       console.log('error: ', err);
@@ -22,7 +22,7 @@ city.create = function (newCity, result) {
     }
   });
 };
-city.findById = function (id, result) {
+city.findById = (id, result) => {
   dbConn.query('Select * from tblCitiesImport where id = ? ', id, (err, res) => {
     if (err) {
       console.log('error: ', err);
@@ -32,7 +32,7 @@ city.findById = function (id, result) {
     }
   });
 };
-city.findAll = function (result) {
+city.findAll = (result) => {
   dbConn.query('Select * from tblCitiesImport', (err, res) => {
     if (err) {
       console.log('error: ', err);
@@ -53,7 +53,7 @@ city.update = (id, result) => {
     }
   });
 };
-city.delete = function (id, result) {
+city.delete = (id, result) => {
   dbConn.query('DELETE FROM tblCitiesImport WHERE id = ?', [id], (err, res) => {
     if (err) {
       console.log('error: ', err);

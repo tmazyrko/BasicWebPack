@@ -1,6 +1,6 @@
 const City = require('../models/city.model');
 
-exports.findAll = function (req, res) {
+exports.findAll = (req, res) => {
   City.findAll((err, cities) => {
     console.log('controller');
     if (err) { res.send(err); }
@@ -9,7 +9,7 @@ exports.findAll = function (req, res) {
   });
 };
 
-exports.create = function (req, res) {
+exports.create = (req, res) => {
   const newEmployee = new City(req.body);
 
   // handles null error
@@ -23,14 +23,14 @@ exports.create = function (req, res) {
   }
 };
 
-exports.findById = function (req, res) {
+exports.findById = (req, res) => {
   City.findById(req.params.id, (err, employee) => {
     if (err) { res.send(err); }
     res.json(employee);
   });
 };
 
-exports.update = function (req, res) {
+exports.update = (req, res) => {
   if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
     res.status(400).send({ error: true, message: 'Please provide all required field' });
   } else {
@@ -41,7 +41,7 @@ exports.update = function (req, res) {
   }
 };
 
-exports.delete = function (req, res) {
+exports.delete = (req, res) => {
   City.delete(req.params.id, (err, employee) => {
     if (err) { res.send(err); }
     res.json({ error: false, message: 'Employee successfully deleted', data: employee });
