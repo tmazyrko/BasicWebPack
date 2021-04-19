@@ -18,7 +18,7 @@ export default class TableGen {
   generateTable(table, data) {
     for (const element of data) {
       const row = table.insertRow();
-      //console.log(element);
+      // console.log(element);
       let key;
       for (key in element) {
         const cell = row.insertCell();
