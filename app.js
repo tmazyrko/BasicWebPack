@@ -28,3 +28,11 @@ app.get('/', function (req, res) {
 app.get('/register', (req, res) => {
   res.render('register');
 });
+
+const crypto = require('crypto');
+
+const getHashedPassword = (password) => {
+  const sha256 = crypto.createHash('sha256');
+  const hash = sha256.update(password).digest('base64');
+  return hash;
+}
