@@ -90,3 +90,7 @@ app.post('/register', (req, res) => {
 app.get('/login', (req, res) => {
   res.render('login');
 });
+
+const generateAuthToken = () => {
+  return crypto.randomBytes(30).toString('hex');
+}
