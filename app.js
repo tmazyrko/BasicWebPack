@@ -145,3 +145,7 @@ const requireAuth = (req, res, next) => {
     });
   }
 };
+
+app.get('/protected', requireAuth, (req, res) => {
+  res.render('protected');
+});
