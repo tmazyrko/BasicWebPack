@@ -47,3 +47,42 @@ const users = [
     password: 'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg='
   }
 ];
+
+app.post('/register', (req, res) => {
+  const { email, firstName, lastName, password, confirmPassword } = req.body;
+
+  // Check if the password and confirm password fields match
+  if (password === confirmPassword) {
+
+    // Check if user with the same email is also registered
+    if (users.find(user => user.email === email)) {
+
+      res.render('register', {
+        message: 'User already registered.',
+        messageClass: 'alert-danger'
+      });
+
+      return;
+    }
+
+    const hashedPassword = getHashedPassword(password);
+
+    // Store user into the database if you are using one
+    users.push({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword
+    });
+
+    res.render('login', {
+      message: 'Registration Complete. Please login to continue.',
+      messageClass: 'alert-success'
+    });
+  } else {
+    res.render('register', {
+      message: 'Password does not match.',
+      messageClass: 'alert-danger'
+    });
+  }
+});
