@@ -12,6 +12,17 @@ const open = require('open');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 
+// App Variables
+const app = express();
+const port = process.env.PORT || "8000";
+
+// Session Configuration
+
+
+// Passport Configuration
+
+
+// App Configuration
 
 
 /*
