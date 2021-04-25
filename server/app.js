@@ -71,7 +71,9 @@ passport.deserializeUser((user, done) => {
 app.use('/', authRouter);
 
 // Routes Definitions
-
+app.get("/", (req, res) => {
+  res.render("index", { title: "Home" });
+});
 
 // Server Activation
 app.listen(port, () => {
