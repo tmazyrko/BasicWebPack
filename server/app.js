@@ -14,10 +14,20 @@ const cors = require('cors')
 
 // App Variables
 const app = express();
-const port = process.env.PORT || "8000";
+const port = process.env.PORT || '8000';
 
 // Session Configuration
+const session = {
+    secret: provess.env.SESSION_SECRET,
+    cookie: {},
+    resave: false,
+    saveUninitialized: false
+};
 
+if(app.get('env') === 'production') {
+    // Serve secure cookies, requires HTTPS
+    session.cookie.secure = true;
+}
 
 // Passport Configuration
 
