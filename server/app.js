@@ -1,14 +1,24 @@
 'use strict';
 const express = require('express');
-const open = require("open");
+const path = require('path');
+
+const expressSession = require('express-session');
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
+
+require('dotenv').config();
+
+const open = require('open');
 const bodyParser = require('body-parser');
-var cors = require('cors')
+const cors = require('cors')
+
+
+
+/*
+// create express app
 const app = express();
 app.use(cors())
 app.use(express.static('docs'));
-
-// create express app
-
 
 // Setup server port
 const port = process.env.PORT || 5000;
@@ -35,3 +45,4 @@ app.listen(app.get('port'), function() {
     open("http://localhost:8000");
 
 });
+*/
