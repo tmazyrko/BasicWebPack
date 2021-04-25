@@ -70,6 +70,14 @@ passport.deserializeUser((user, done) => {
 // Router Mounting
 app.use('/', authRouter);
 
+// Routes Definitions
+
+
+// Server Activation
+app.listen(port, () => {
+  console.log(`Listening to requests on http://localhost:${port}`);
+});
+
 /*
 // create express app
 const app = express();
