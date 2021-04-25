@@ -18,7 +18,7 @@ const port = process.env.PORT || '8000';
 
 // Session Configuration
 const session = {
-    secret: provess.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     cookie: {},
     resave: false,
     saveUninitialized: false
