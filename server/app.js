@@ -67,6 +67,9 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
+// Router Mounting
+app.use('/', authRouter);
+
 /*
 // create express app
 const app = express();
