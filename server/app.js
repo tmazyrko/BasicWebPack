@@ -36,8 +36,25 @@ const books = [
     },
 ]
 
-app.get('/books', (req, res) => {
+const accessTokenSecret = 'testSecret123';
+
+const authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+
+    if(authHeader){
+        const token = authHeader.split(' ')[1];
+
+        jwt.verify(token, accessTokenSecret, (err, user) => {
+            if(err){
+                return res.sendStatus(403);
+            }
+
+            req.user = user;
+            next();
+        })
+    }
+};
+
+app.get('/books', authenticateJWT, (req, res) => {
     res.json(books);
 });
-
-const accessTokenSecret = 'testSecret123';
