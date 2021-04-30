@@ -39,3 +39,5 @@ const books = [
 app.get('/books', (req, res) => {
     res.json(books);
 });
+
+const accessTokenSecret = 'testSecret123';
