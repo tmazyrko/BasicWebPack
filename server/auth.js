@@ -22,6 +22,7 @@ const users = [
 ];
 
 const accessTokenSecret = 'testSecret123';
+const refreshTokenSecret = 'refreshSecret123';
 const refreshTokens = [];
 
 app.post('/login', (req, res) => {
@@ -33,10 +34,14 @@ app.post('/login', (req, res) => {
 
   if(user){
       // Generate an access token
-      const accessToken = jwt.sign({ username: user.username, role: user.role }, accessTokenSecret);
+      const accessToken = jwt.sign({ username: user.username, role: user.role }, accessTokenSecret, { expiresIn: '20m' });
+      const refreshToken = jwt.sign({ username: user.username, role: user.role }, refreshTokenSecret);
+
+      refreshTokens.push(refreshToken);
 
       res.json({
-        accessToken
+        accessToken,
+        refreshToken
       });
   } else {
       res.send('Username or password incorrect');
