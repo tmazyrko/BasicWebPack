@@ -20,3 +20,5 @@ const users = [
     role: 'member'
   }
 ];
+
+const accessTokenSecret = 'testSecret123';
