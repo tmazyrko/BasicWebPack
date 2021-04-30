@@ -74,4 +74,6 @@ app.post('/token', (req, res) => {
 app.post('/logout', (req, res) => {
   const { token } = req.body;
   refreshTokens = refreshTokens.filter(t => t !== token);
+
+  res.send("Logout successful");
 })
