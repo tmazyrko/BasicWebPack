@@ -58,3 +58,16 @@ const authenticateJWT = (req, res, next) => {
 app.get('/books', authenticateJWT, (req, res) => {
     res.json(books);
 });
+
+app.post('/books', authenticateJWT, (req, res) => {
+    const { role } = req.user;
+
+    if(role !== 'admin'){
+        return res.sendStatus(403);
+    }
+
+    const book = req.body;
+    books.push(book);
+
+    res.send('Book added successfully');
+});
