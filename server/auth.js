@@ -22,6 +22,7 @@ const users = [
 ];
 
 const accessTokenSecret = 'testSecret123';
+const refreshTokens = [];
 
 app.post('/login', (req, res) => {
   // Read username and password from request body
