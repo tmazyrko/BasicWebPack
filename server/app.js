@@ -121,11 +121,6 @@ app.get("/user", secured, (req, res, next) => {
   });
 });
 
-// Server Activation
-app.listen(port, () => {
-  console.log(`Listening to requests on http://localhost:${port}`);
-});
-
 // This route doesn't need authentication
 app.get('/api/public', function(req, res) {
   res.json({
@@ -138,6 +133,11 @@ app.get('/api/private', checkJwt, function(req, res) {
   res.json({
     message: 'Hello from a private endpoint! You need to be authenticated to see this.'
   });
+});
+
+// Server Activation
+app.listen(port, () => {
+  console.log(`Listening to requests on http://localhost:${port}`);
 });
 
 /*
