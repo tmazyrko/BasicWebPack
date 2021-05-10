@@ -144,8 +144,7 @@ app.get('/city', secured, function(req, res) {
         cityList.push(city);
       }
 
-      // Render index.pug page using array
-      res.render('city', {"cityList": cityList});
+      res.render('city', { title: "Table View", "cityList": cityList });
     }
   });
 
@@ -155,7 +154,7 @@ app.get('/city', secured, function(req, res) {
 });
 
 app.get('/panel', (req, res) => {
-  res.render("panel", {  });
+  res.render("panel", { title: "Query" });
 });
 
 app.post('/results', (req, res, next) => {
@@ -184,7 +183,7 @@ app.post('/results', (req, res, next) => {
       }
 
       // Render index.pug page using array
-      res.render('results', {"result": result});
+      res.render('results', { title: "Query Result", "result": result });
     }
   });
 
