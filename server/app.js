@@ -85,6 +85,8 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Creating custom middleware with Express
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated();
@@ -152,8 +154,42 @@ app.get('/city', secured, function(req, res) {
 
 });
 
-app.get("/panel", (req, res) => {
+app.get('/panel', (req, res) => {
   res.render("panel", {  });
+});
+
+app.post('/results', (req, res, next) => {
+  const query = req.body.query;
+  let result = [];
+
+  var connection = getMySQLConnection();
+  connection.connect();
+
+  connection.query(query.toString(), function(err, rows, fields) {
+    if (err) {
+      res.status(500).json({"status_code": 500,"status_message": "internal server error"});
+    } else {
+      // Loop check on each row
+      for (var i = 0; i < rows.length; i++) {
+
+        // Create an object to save current row's data
+        var city = {
+          'id': rows[i].id,
+          'name': rows[i].fldName,
+          'country': rows[i].fldCountry,
+          'population': rows[i].fldPopulation
+        }
+        // Add object into array
+        result.push(city);
+      }
+
+      // Render index.pug page using array
+      res.render('results', {"result": result});
+    }
+  });
+
+  connection.end();
+
 });
 
 // This route doesn't need authentication
