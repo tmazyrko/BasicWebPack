@@ -19,6 +19,8 @@ const jwt = require('express-jwt');
 const jwtAuthz = require('express-jwt-authz');
 const jwksRsa = require('jwks-rsa');
 
+var mysql = require('mysql');
+
 // App Variables
 const app = express();
 const port = process.env.PORT || '3000';
@@ -52,6 +54,17 @@ const strategy = new Auth0Strategy(
       return done(null, profile);
   }
 );
+
+// Database Connection
+function getMySQLConnection() {
+  return mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'root',
+    port     : '32000',
+    database : 'citiesData'
+  });
+}
 
 // App Configuration
 app.set('views', path.join(__dirname, 'views'));
