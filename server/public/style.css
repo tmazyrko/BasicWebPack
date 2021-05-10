@@ -72,12 +72,9 @@ input {
     justify-content: space-between;
     align-items: flex-start;
 
-    height: 100%;
-    width: 100%;
+    background: #494949;
 
     padding: 20px;
-
-    background-size: cover;
 
     font-family: "Merriweather Sans", sans-serif;
 }
@@ -157,4 +154,9 @@ input {
 .UserView {
     background: url("skyline.jpg") left bottom;
     background-size: cover;
+}
+
+.center {
+    margin: auto;
+    width: auto;
 }
