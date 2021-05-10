@@ -155,7 +155,6 @@ input {
 }
 
 .UserView {
-    background: url("https://cdn.auth0.com/blog/whatabyte-portal/patio.jpeg") left
-    bottom;
+    background: url("skyline.jpg") left bottom;
     background-size: cover;
 }
