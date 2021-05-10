@@ -116,6 +116,42 @@ app.get("/user", secured, (req, res, next) => {
   });
 });
 
+app.get('/city', function(req, res) {
+  var cityList = [];
+
+  // Connect to MySQL database.
+  var connection = getMySQLConnection();
+  connection.connect();
+
+  // Do the query to get data.
+  connection.query('Select * from tblCitiesImport', function(err, rows, fields) {
+    if (err) {
+      res.status(500).json({"status_code": 500,"status_message": "internal server error"});
+    } else {
+      // Loop check on each row
+      for (var i = 0; i < rows.length; i++) {
+
+        // Create an object to save current row's data
+        var city = {
+          'id':rows[i].id,
+          'name':rows[i].fldName,
+          'country':rows[i].fldCountry,
+          'population':rows[i].fldPopulation
+        }
+        // Add object into array
+        cityList.push(city);
+      }
+
+      // Render index.pug page using array
+      res.render('city', {"cityList": cityList});
+    }
+  });
+
+  // Close the MySQL connection
+  connection.end();
+
+});
+
 // This route doesn't need authentication
 app.get('/api/public', function(req, res) {
   res.json({
