@@ -153,6 +153,44 @@ app.get('/city', secured, function(req, res) {
 
 });
 
+app.get('/city/:id', function(req, res) {
+  // Connect to MySQL database.
+  var connection = getMySQLConnection();
+  connection.connect();
+
+  // Do the query to get data.
+  connection.query('Select * from tblCitiesImport where id = ' + req.params.id, function(err, rows, fields) {
+    var city;
+
+    if (err) {
+      res.status(500).json({"status_code": 500,"status_message": "internal server error"});
+    } else {
+      // Check if the result is found or not
+      if(rows.length==1) {
+        // Create the object to save the data.
+        var city = {
+          'name':rows[0].fldName,
+          'latitude':rows[0].fldLat,
+          'longitude':rows[0].fldLong,
+          'country':rows[0].fldCountry,
+          'abbreviation':rows[0].fldAbbreviation,
+          'capitalstatus':rows[0].fldCapitalStatus,
+          'population':rows[0].fldPopulation
+        }
+        // render the details.plug page.
+        res.render('details', {"city": city});
+      } else {
+        // render not found page
+        res.status(404).json({"status_code":404, "status_message": "Not found"});
+      }
+    }
+  });
+
+  // Close MySQL connection
+  connection.end();
+});
+
+
 app.get('/panel', (req, res) => {
   res.render("panel", { title: "Query" });
 });
