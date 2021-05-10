@@ -1,9 +1,22 @@
 extends layout
 
 block layout-content
-    div
-        form(method='POST' action='/results')
-            label(for='query') SQL Query
+    div.View
+        h1.Banner CITY-DB
+        div
             br
-            input(type='text' id='query' name='query')
-            button(type="submit") Sign in
+        div.NavButtons
+            a(href="/user")
+                div.NavButton Menu
+            a(href="/city")
+                div.NavButton Database
+            a(href="/logout")
+                div.NavButton Log out
+        div
+            br
+        div.Message.center
+            form(method='POST' action='/results')
+                label(for='query') Enter the query
+                br
+                input(type='text' id='query' name='query')
+                button(type="submit") Submit
