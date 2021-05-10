@@ -1,14 +1,26 @@
-html
-    head
-        title= 'Person List'
-        link(rel="stylesheet" href="/style.css")
-    body
-        h1= 'Person List'
-    table
-      for city in cityList
-          tr
-              td= city.id
-              td
-                  a(href='/person/'+city.id) #{city.name}
-              td= city.country
-              td= city.population
+extends layout
+
+block layout-content
+    div.View
+        h1.Banner CITY-DB
+        div
+            br
+        div.NavButtons
+            a(href="/city")
+                div.NavButton Database
+            a(href="/panel")
+                div.NavButton Query
+            a(href="/logout")
+                div.NavButton Log out
+        div
+            br
+        div.Message.center
+            h1= 'Database - Table View'
+            table
+              for city in cityList
+                  tr
+                      td= city.id
+                      td
+                          a(href='/city/' + city.id) #{city.name}
+                      td= city.country
+                      td= city.population
