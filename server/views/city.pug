@@ -1,0 +1,14 @@
+html
+    head
+        title= 'Person List'
+        link(rel="stylesheet" href="/style.css")
+    body
+        h1= 'Person List'
+    table
+      for city in cityList
+          tr
+              td= city.id
+              td
+                  a(href='/person/'+city.id) #{city.name}
+              td= city.country
+              td= city.population

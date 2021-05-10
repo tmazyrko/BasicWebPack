@@ -52,6 +52,10 @@ a {
     user-select: none;
 }
 
+table, th, td {
+    border: 1px solid black;
+}
+
 #root {
     display: flex;
     flex-direction: column;
