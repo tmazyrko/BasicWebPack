@@ -6,8 +6,8 @@ block layout-content
         div
             br
         div.NavButtons
-            a(href="/city")
-                div.NavButton Database
+            a(href="/user")
+                div.NavButton Menu
             a(href="/panel")
                 div.NavButton Query
             a(href="/logout")
@@ -17,6 +17,11 @@ block layout-content
         div.Message.center
             h1= 'Database - Table View'
             table
+              tr
+                td ID
+                td City
+                td Country
+                td Population
               for city in cityList
                   tr
                       td= city.id
