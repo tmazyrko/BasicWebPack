@@ -2,16 +2,16 @@ extends layout
 
 block layout-content
     div.View.WelcomeView
-        h1.Banner BABABOOEY
+        h1.Banner CITY-DB
         div.Message
             div.Title
-                h3 Making the Best
-                h1 Banana For Monky
-            span.Details Access the Bababooey Web Portal
+                h3 Welcome to
+                h1 CITY-DB
+            span.Details Log in to access the CITY-DB Web Portal
         div.NavButtons
             if isAuthenticated
                 a(href="/user")
-                    div.NavButton My Profile
+                    div.NavButton Main Menu
             else
                 a(href="/login")
                     div.NavButton Log in
