@@ -2,6 +2,8 @@ extends layout
 
 block layout-content
     div
-        label(for='query') SQL Query
-        br
-        input(type='text' id='query' name='query')
+        form(method='POST' action='/results')
+            label(for='query') SQL Query
+            br
+            input(type='text' id='query' name='query')
+            button(type="submit") Sign in
