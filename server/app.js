@@ -9,6 +9,7 @@ const Auth0Strategy = require('passport-auth0');
 require('dotenv').config();
 
 const authRouter = require('./auth');
+const citiesRoutes = require('./routes/cities.routes')
 
 const open = require('open');
 const bodyParser = require('body-parser');
@@ -99,6 +100,7 @@ const checkJwt = jwt({
 
 // Router Mounting
 app.use('/', authRouter);
+app.use('/api/private', citiesRoutes)
 
 // Routes Definitions
 const secured = (req, res, next) => {
