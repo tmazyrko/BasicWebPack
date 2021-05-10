@@ -1,0 +1,14 @@
+html
+    head
+        title= 'Query Result'
+        link(rel="stylesheet" href="/style.css")
+    body
+        h1= 'Query Result'
+    table
+      for entry in result
+          tr
+              td= entry.id
+              td
+                  a(href='/person/'+entry.id) #{entry.name}
+              td= entry.country
+              td= entry.population
