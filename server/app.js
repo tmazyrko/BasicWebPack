@@ -116,7 +116,7 @@ app.get("/user", secured, (req, res, next) => {
   });
 });
 
-app.get('/city', function(req, res) {
+app.get('/city', secured, function(req, res) {
   var cityList = [];
 
   // Connect to MySQL database.
@@ -150,6 +150,10 @@ app.get('/city', function(req, res) {
   // Close the MySQL connection
   connection.end();
 
+});
+
+app.get("/panel", (req, res) => {
+  res.render("panel", {  });
 });
 
 // This route doesn't need authentication

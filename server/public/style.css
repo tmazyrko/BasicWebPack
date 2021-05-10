@@ -56,6 +56,10 @@ table, th, td {
     border: 1px solid black;
 }
 
+input {
+    width:33%;
+}
+
 #root {
     display: flex;
     flex-direction: column;
