@@ -1,0 +1,28 @@
+extends layout
+
+block layout-content
+    div.View
+        h1.Banner CITY-DB
+        div
+            br
+        div.NavButtons
+            a(href="/user")
+                div.NavButton Menu
+            a(href="/panel")
+                div.NavButton Query
+            a(href="/logout")
+                div.NavButton Log out
+        div
+            br
+        div.Message.center
+            h1= 'Detail View'
+            p Name: #{city.name}
+            p Latitude: #{city.latitude}
+            p Longitude: #{city.longitude}
+            p Country: #{city.country}
+            p Abbreviation: #{city.abbreviation}
+            p Capital: #{city.capitalstatus}
+            p Population: #{city.population}
+            div.NavButtons
+                a(href="/city")
+                    div.NavButton Close
