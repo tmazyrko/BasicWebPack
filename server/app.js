@@ -153,7 +153,7 @@ app.get('/city', secured, function(req, res) {
 
 });
 
-app.get('/city/:id', function(req, res) {
+app.get('/city/:id', secured, function(req, res) {
   // Connect to MySQL database.
   var connection = getMySQLConnection();
   connection.connect();
@@ -191,11 +191,11 @@ app.get('/city/:id', function(req, res) {
 });
 
 
-app.get('/panel', (req, res) => {
+app.get('/panel', secured, (req, res) => {
   res.render("panel", { title: "Query" });
 });
 
-app.post('/results', (req, res, next) => {
+app.post('/results', secured, (req, res, next) => {
   const query = req.body.query;
   let result = [];
 
