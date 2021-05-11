@@ -1,14 +1,39 @@
-html
-    head
-        title= 'Query Result'
-        link(rel="stylesheet" href="/style.css")
-    body
-        h1= 'Query Result'
-    table
-      for entry in result
-          tr
-              td= entry.id
-              td
-                  a(href='/person/'+entry.id) #{entry.name}
-              td= entry.country
-              td= entry.population
+extends layout
+
+block layout-content
+    div.View
+        h1.Banner CITY-DB
+        div
+            br
+        div.NavButtons
+            a(href="/user")
+                div.NavButton Menu
+            a(href="/panel")
+                div.NavButton Query
+            a(href="/logout")
+                div.NavButton Log out
+        div
+            br
+        div.Message.center
+            h1= 'Query Result'
+            table
+                tr
+                    td ID
+                    td City
+                    td Country
+                    td Latitude
+                    td Longitude
+                    td Capital
+                    td Abbr.
+                    td Population
+                for entry in result
+                    tr
+                      td= entry.id
+                      td
+                          a(href='/city/' + entry.id) #{entry.name}
+                      td= entry.country
+                      td= entry.latitude
+                      td= entry.longitude
+                      td= entry.capitalstatus
+                      td= entry.abbreviation
+                      td= entry.population
