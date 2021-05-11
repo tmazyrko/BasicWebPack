@@ -211,10 +211,14 @@ app.post('/results', secured, (req, res, next) => {
 
         // Create an object to save current row's data
         var city = {
-          'id': rows[i].id,
-          'name': rows[i].fldName,
-          'country': rows[i].fldCountry,
-          'population': rows[i].fldPopulation
+          'id':rows[i].id,
+          'name':rows[i].fldName,
+          'latitude':rows[i].fldLat,
+          'longitude':rows[i].fldLong,
+          'country':rows[i].fldCountry,
+          'abbreviation':rows[i].fldAbbreviation,
+          'capitalstatus':rows[i].fldCapitalStatus,
+          'population':rows[i].fldPopulation
         }
         // Add object into array
         result.push(city);
